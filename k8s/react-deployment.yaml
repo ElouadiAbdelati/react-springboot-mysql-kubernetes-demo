@@ -1,0 +1,42 @@
+# ... Deployment YAML definition
+apiVersion: apps/v1                                     # API version
+kind: Deployment                                        # Type of kubernetes resource
+metadata:
+  name: react-deployment                 # Name of the kubernetes resource
+spec:
+  replicas: 1                                           # No of replicas/pods to run
+  selector:                     
+    matchLabels:                                        # This deployment applies to Pods matching the specified labels
+      app: react
+      
+  template:                                             # Template for creating the Pods in this deployment
+    metadata:
+      labels:                                           # Labels that will be applied to all the Pods in this deployment
+        app: react
+    spec:                                               # Spec for the containers that will run inside the Pods
+      containers:
+      - name: react
+        image: elouadiabdelati/react
+        imagePullPolicy: Never
+        ports:
+          - containerPort: 3000                           # Should match the Port that the container listens on
+        env:
+          - name: API_URL
+            valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: API_URL
+
+---
+# ... Service YAML definition
+apiVersion: v1                                          # API version
+kind: Service                                           # Type of kubernetes resource
+metadata:
+  name: react-service                 # Name of the kubernetes resource
+spec:
+  type: NodePort                                        # Exposes the service by opening a port on each node
+  selector:
+    app: react                          # Any Pod matching the label `app=corona-tracker-client` will be picked up by this service
+  ports:                                                # Forward incoming connections on port 80 to the target port 80 in the Pod
+  - port: 3000
+    targetPort: 3000
