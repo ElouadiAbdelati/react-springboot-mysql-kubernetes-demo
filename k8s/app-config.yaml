@@ -5,4 +5,6 @@ metadata:
 data:
   BD_URL: mysql-service
   MYSQL_DATABASE: octo
-  API_URL: spring-service
+  web.properties: |
+      window.API_URL= spring-service
+

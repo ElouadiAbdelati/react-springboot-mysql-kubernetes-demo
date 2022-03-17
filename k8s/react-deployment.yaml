@@ -17,15 +17,20 @@ spec:
       containers:
       - name: react
         image: elouadiabdelati/react
-        imagePullPolicy: Never
+        imagePullPolicy: Never                             #used for getting it to pull local images
         ports:
           - containerPort: 3000                           # Should match the Port that the container listens on
-        env:
-          - name: API_URL
-            valueFrom:
-                configMapKeyRef:
-                  name: app-config
-                  key: API_URL
+        volumeMounts:
+          - name: config
+            mountPath: "/usr/share/nginx/html/config.js"
+            subPath: "config.js"
+      volumes:
+        - name: config
+          configMap:
+             name: app-config
+             items:
+                - key: "web.properties"
+                  path: "config.js"
 
 ---
 # ... Service YAML definition
