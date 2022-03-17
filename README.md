@@ -1,8 +1,8 @@
 # react-springboot-mysql-kubernetes-demo
 
 
-package spring app
+1- package spring app
 
-minikube start 
+2- minikube start 
 
-open k8s folder with git bach!  and then  ./script.sh
+3- open k8s folder with git bach!  and then  ./script.sh
