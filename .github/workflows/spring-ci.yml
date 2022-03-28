@@ -26,15 +26,10 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file spring/pom.xml
-  
-  docker_hub:
-    needs: build_and_test
-    runs-on: ubuntu-latest
-    steps:
-     - uses: actions/checkout@v2
-     - name: build and push docker image
-       uses: mr-smithers-excellent/docker-build-push@v4
-       with:
+      
+    - name: build and push docker image
+      uses: mr-smithers-excellent/docker-build-push@v4
+      with:
         image: elouadiabdelati/github-actions-demo-spring-app
         registry: docker.io
         dockerfile: ./spring/Dockerfile
