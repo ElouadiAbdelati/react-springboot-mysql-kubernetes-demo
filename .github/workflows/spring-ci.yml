@@ -6,6 +6,10 @@ on:
       - main
     paths:
       - "spring/**"
+  pull_request:
+    branches:
+      - "spring/**"
+    
   
 jobs:
   build:
