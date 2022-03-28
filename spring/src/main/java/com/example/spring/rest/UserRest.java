@@ -12,10 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @CrossOrigin("*")
 public class UserRest {
-
-    
-    
-    
+        
     private UserDao userDao;
 
     @GetMapping("/")
