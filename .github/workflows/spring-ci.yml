@@ -33,7 +33,7 @@ jobs:
     steps:
      - uses: actions/checkout@v2
      - name: build and push docker image
-     - uses: mr-smithers-excellent/docker-build-push@v4
+       uses: mr-smithers-excellent/docker-build-push@v4
        with:
         image: elouadiabdelati/github-actions-demo-spring-app
         registry: docker.io
