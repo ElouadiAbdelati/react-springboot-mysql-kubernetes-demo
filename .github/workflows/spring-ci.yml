@@ -37,7 +37,7 @@ jobs:
        with:
         image: elouadiabdelati/github-actions-demo-spring-app
         registry: docker.io
-        context: ./spring
+        directory: ./spring
         dockerfile: ./spring/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
