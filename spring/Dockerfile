@@ -4,7 +4,7 @@ RUN mkdir -p /workspace
 WORKDIR /workspace
 COPY pom.xml /workspace
 COPY src /workspace/src
-RUN mvn -f spring/pom.xml clean package -Dmaven.test.skip
+RUN mvn -f pom.xml clean package -Dmaven.test.skip
 
 FROM openjdk:11
 COPY --from=build /workspace/target/*.jar app.jar
