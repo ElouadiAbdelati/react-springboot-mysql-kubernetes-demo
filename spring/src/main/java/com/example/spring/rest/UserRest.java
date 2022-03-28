@@ -19,10 +19,7 @@ public class UserRest {
     public List<User> findAll(){
         return userDao.findAll();
     }
-      @GetMapping("/all")
-    public List<User> findAll(){
-        return userDao.findAll();
-    }
+   
 
     @PostMapping("/")
     public User save(@RequestBody User user){
